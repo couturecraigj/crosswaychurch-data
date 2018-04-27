@@ -5,15 +5,9 @@ const puppeteer = require('puppeteer');
 const handleVideo = require('./getAllVideoFromPage')
 const handleAudio = require('./getAllAudioFromPage')
 const fs = require('fs');
-const download = require('./utils/download')
-const pause = require('./utils/pause')
 const save = require('./utils/saveJson')
-const streamImage = require('./utils/streamImage')
 const getSermonCategories = require('./getSermonCategories')
 const cleanDownloads = require('./utils/cleanDownloads')
-const request = require('request');
-const path = require('path');
-const downloadsFinished = require('./utils/waitUntilDownloadFinished')
 
 const mainPage = 'http://www.keenecrossway.org';
 
@@ -82,7 +76,7 @@ const mainPage = 'http://www.keenecrossway.org';
   /**
    * Change Pages to include the Pages you want to adjust to.
    */
-  for (let i = 6; i > 4; i--) {
+  for (let i = 37; i > 0; i--) {
     // Currently the oldest Page is 37
     downloads = downloads.concat(await handlePage(i));
   }
