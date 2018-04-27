@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node index.js"
+        "get:sermons": "node scripts/index.js",
+        "get:assets": "node scripts/getAllAssetsOnPage.js"
     },
     "author": "Craig Couture <craigjcouture@gmail.com>",
     "license": "ISC",
