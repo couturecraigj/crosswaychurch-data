@@ -31,3 +31,5 @@ const downloadsFinished = async (dir, ms = 1000) => {
     checkingFunction(resolve, reject)
   })
 }
+
+module.exports = downloadsFinished;

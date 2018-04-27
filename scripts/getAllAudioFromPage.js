@@ -1,17 +1,21 @@
-const handleAudio = async (audioLinks, url, browser) => {
+const downloadsFinished = require('./utils/waitUntilDownloadFinished')
+const streamImage = require('./utils/streamImage')
+
+const downloadPath = './downloads'
+
+const handleAudio = async (audioLinks, url, browser, { pageNumber, mainUrl } = {}) => {
   const audioPage = await browser.newPage();
   await audioPage.goto(url)
   const client = await audioPage.target().createCDPSession();
   await client.send('Page.setDownloadBehavior', {
-    behavior: 'allow', downloadPath: './'
+    behavior: 'allow', downloadPath
   });
 
   const dataFile = await audioLinks.reduce((promise, selector) => promise.then(async (array) => {
     await audioPage.click(selector)
 
     // await pause(000);
-    const filename = await downloadsFinished('./').catch(async (e) => {
-      console.log(e);
+    const filename = await downloadsFinished(downloadPath).catch(async (e) => {
       await audioPage.goto(mainUrl, { waitUntil: 'domcontentloaded' });
       return;
     })

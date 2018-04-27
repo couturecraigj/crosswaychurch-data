@@ -1,4 +1,7 @@
-const handleVideo = async (videoLinks, url, browser) => {
+const pause = require('./utils/pause')
+const streamImage = require('./utils/streamImage')
+
+const handleVideo = async (videoLinks, url, browser, { pageNumber, mainUrl } = {}) => {
   const videoPage = await browser.newPage();
   await videoPage.goto(url)
   const dataFile = await videoLinks.reduce((promise, selector) => promise.then(async (array) => {
@@ -61,6 +64,7 @@ const handleVideo = async (videoLinks, url, browser) => {
       return ele.src;
     }, wrapper)
     await videoPage.goto(mainUrl, { waitUntil: 'domcontentloaded' })
+    console.log(data);
     array.push(data);
     return array;
   }), Promise.resolve([])).catch(async e => {

@@ -1,11 +1,18 @@
 const download = require('./download');
+const path = require('path')
+const fs = require('fs')
 
 const streamImage = (src) => {
   return new Promise(async (resolve) => {
     if (!src) return resolve(src);
     const localPath = /([^\/]*)$/.exec(src)[0]
     try {
-      await download(src, localPath);
+      fs.mkdirSync('assets')
+    } catch (error) {
+
+    }
+    try {
+      await download(src, path.join('assets', localPath));
     } catch (error) {
       return resolve(localPath);
     }
@@ -13,3 +20,5 @@ const streamImage = (src) => {
     return resolve(localPath);
   })
 }
+
+module.exports = streamImage
