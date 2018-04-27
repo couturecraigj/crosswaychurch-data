@@ -5,8 +5,9 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "get:sermons": "node scripts/index.js",
-        "get:assets": "node scripts/getAllAssetsOnPage.js"
+        "get:sermons": "node scripts/getAllSermonData.js",
+        "get:assets": "node scripts/getAllAssetsOnPages.js",
+        "download:sermons": "node scripts/streamAudio.js"
     },
     "author": "Craig Couture <craigjcouture@gmail.com>",
     "license": "ISC",

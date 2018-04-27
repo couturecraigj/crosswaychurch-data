@@ -267,7 +267,7 @@ const mainPage = 'http://www.keenecrossway.org';
     await page.close();
     return dataFile;
   }
-  let downloads = require('./downloads.json');
+  let downloads = require('../downloads.json');
 
   downloads.map(download => {
     if (download.type === 'audio') return download;
