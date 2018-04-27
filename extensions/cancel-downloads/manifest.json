@@ -1,0 +1,16 @@
+{
+    "manifest_version": 4,
+    "name": "cancel-downloads",
+    "version": "1.3",
+    "permissions": [
+        "downloads",
+        "experimental",
+        "tabs",
+        "bookmarks",
+        "*://*.keenecrossway.org/*"
+    ],
+    "content_scripts": [{
+        "matches": ["*://*.keenecrossway.org/*"],
+        "js": ["index.js"]
+    }]
+}
